@@ -1,4 +1,5 @@
 """Memory, puzzle game of number pairs.
+EDIT BY: EDUARDO GAONA A01712259, JAVIER LOZANO A01029756
 
 Exercises:
 
@@ -15,9 +16,11 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
+
 tiles = list(range(8)) * 2
 state = {'mark': None}
 hide = [True] * 16
+
 
 def square(x, y):
     "Draw white square with black outline at (x, y)."
@@ -45,12 +48,20 @@ def tap(x, y):
     spot = index(x, y)
     mark = state['mark']
 
+    # In two cases, no mather if we spot or not, we're gona increase #of taps in 1
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+
+        tiles_c = tiles_c + 1
+        print("TAP  # ", tiles_c)
+
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        tiles_c = tiles_c + 1
+        print("TAP  # ", tiles_c)
+
 
 def draw():
     "Draw image and tiles."
@@ -58,7 +69,6 @@ def draw():
     goto(0, 0)
     shape(car)
     stamp()
-
     for count in range(16):
         if hide[count]:
             x, y = xy(count)

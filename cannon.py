@@ -1,6 +1,5 @@
 """Cannon, hitting targets with projectiles.
-
-Exercises
+EDIT BY: EDUARDO GAONA A01712259, JAVIER LOZANO A01029756
 
 1. Keep score by counting target hits.
 2. Vary the effect of gravity.
@@ -16,12 +15,15 @@ from freegames import vector
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
+# Inicializamos para score:
+score = 0
 
 def tap(x, y):
     "Respond to screen tap."
     if not inside(ball):
         ball.x = -199
         ball.y = -199
+
         "increase speed by dividing by 10 instead of 25"
 	speed.x = (x + 200) / 10
         speed.y = (y + 200) / 10
@@ -46,6 +48,8 @@ def draw():
 
 def move():
     "Move ball and targets."
+    # Le decimos a la función que utilice score como global
+    global score
     # Generate a new target at random times
     if randrange(40) == 0:
         y = randrange(-150, 150)
@@ -69,13 +73,18 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
+        # Como el anterior entiende para cuando no toca, el caso contrarío sería cuando si
+        else:
+            score = score + 1
+            print("SCORE : ", score)
 
     draw()
 
     # Detect when a target reaches the left side
     for target in targets:
         if not inside(target):
-            #targets.remove(target)
+
+            # targets.remove(target)
             return
 
     ontimer(move, 50)

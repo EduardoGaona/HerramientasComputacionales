@@ -1,5 +1,5 @@
 """Snake, classic arcade game.
-
+EDIT BY: EDUARDO GAONA A01712259, JAVIER LOZANO A01029756
 Exercises
 
 1. How do you make the snake faster or slower?
@@ -40,8 +40,8 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.x = randrange(-20, 20) * 10
+        food.y = randrange(-20, 20) * 10
     else:
         snake.pop(0)
 
@@ -49,10 +49,10 @@ def move():
 
     for body in snake:
         square(body.x, body.y, 9, 'black')
-
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 18, 'green')
     update()
     ontimer(move, 100)
+
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -64,4 +64,5 @@ onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
+move()
 done()
