@@ -19,6 +19,7 @@ tiles = list(range(8)) * 2
 state = {'mark': None}
 hide = [True] * 16
 
+
 def square(x, y):
     "Draw white square with black outline at (x, y)."
     up()
@@ -39,6 +40,7 @@ def xy(count):
     "Convert tiles count to (x, y) coordinates."
     return (count % 4) * 100 - 200, (count // 4) * 100 - 200
 
+
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
@@ -57,7 +59,7 @@ def draw():
     goto(0, 0)
     shape(car)
     stamp()
-
+    
     for count in range(16):
         if hide[count]:
             x, y = xy(count)
