@@ -17,7 +17,7 @@ from freegames import path
 
 car = path('car.gif')
 
-tiles = list(range(8)) * 2
+tiles = list(map(chr, range(97, 105)))*2 # Maping the characters from 97 to 105  
 state = {'mark': None}
 hide = [True] * 16
 
