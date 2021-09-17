@@ -39,6 +39,7 @@ def xy(count):
     "Convert tiles count to (x, y) coordinates."
     return (count % 4) * 100 - 200, (count // 4) * 100 - 200
 
+
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
