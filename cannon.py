@@ -23,8 +23,8 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-	"increase speed by dividing by 10 instead of 25"
-	speed.x = (x + 200) / 10
+        "Divide by 10 instead of 25"
+        speed.x = (x + 200) / 10
         speed.y = (y + 200) / 10
 
 def inside(xy):
