@@ -19,7 +19,6 @@ tiles = list(range(8)) * 2
 state = {'mark': None}
 hide = [True] * 16
 
-
 def square(x, y):
     "Draw white square with black outline at (x, y)."
     up()
@@ -59,7 +58,7 @@ def draw():
     goto(0, 0)
     shape(car)
     stamp()
-    
+
     for count in range(16):
         if hide[count]:
             x, y = xy(count)
