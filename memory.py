@@ -1,4 +1,5 @@
 """Memory, puzzle game of number pairs.
+EDIT BY: EDUARDO GAONA A01712259, JAVIER LOZANO A01029756
 
 Exercises:
 
@@ -15,11 +16,10 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+
+tiles = list(range(8)) * 2
 state = {'mark': None}
-hide = [True] * 64
-# Inicialize tile_c in order to have a variable where we can have a register about how many taps we have done
-tiles_c = 0
+hide = [True] * 16
 
 
 def square(x, y):
@@ -30,24 +30,20 @@ def square(x, y):
     color('black', 'white')
     begin_fill()
     for count in range(4):
-        forward(50)
+        forward(100)
         left(90)
     end_fill()
 
-
 def index(x, y):
     "Convert (x, y) coordinates to tiles index."
-    return int((x + 200) // 50 + ((y + 200) // 50) * 8)
-
+    return int((x + 200) // 100 + ((y + 200) // 100) * 4)
 
 def xy(count):
     "Convert tiles count to (x, y) coordinates."
-    return (count % 8) * 50 - 200, (count // 8) * 50 - 200
+    return (count % 4) * 100 - 200, (count // 4) * 100 - 200
 
 
 def tap(x, y):
-    # make tiles as global v
-    global tiles_c
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
     mark = state['mark']
@@ -73,8 +69,7 @@ def draw():
     goto(0, 0)
     shape(car)
     stamp()
-
-    for count in range(64):
+    for count in range(16):
         if hide[count]:
             x, y = xy(count)
             square(x, y)
@@ -84,13 +79,12 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 40, y + 20)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
-
 
 shuffle(tiles)
 setup(420, 420, 370, 0)
@@ -98,6 +92,5 @@ addshape(car)
 hideturtle()
 tracer(False)
 onscreenclick(tap)
-
 draw()
 done()
