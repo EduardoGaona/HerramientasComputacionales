@@ -51,7 +51,7 @@ def move():
         square(body.x, body.y, 9, 'black')
     square(food.x, food.y, 18, 'green')
     update()
-    ontimer(move, 100)
+    ontimer(move, 80) # Cambiar los milisegundos del ontimer para que se mueva mas rapido
 
 
 setup(420, 420, 370, 0)

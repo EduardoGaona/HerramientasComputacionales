@@ -58,6 +58,7 @@ def move():
     # Move the existing targets
     for target in targets:
         target.x -= 0.5
+        target.y -= 0.20 # Add gravity to the targets
 
     # Move the cannon shot
     if inside(ball):
